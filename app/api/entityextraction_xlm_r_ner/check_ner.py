@@ -56,6 +56,12 @@ async def check_ner(text_input: TextInput):
 
     try:
         results = ner_pipeline(text_input.text)
+        # Convert numpy.float32 scores to standard floats for JSON serialization
+        for entity in results:
+            if 'score' in entity and isinstance(entity['score'], torch.Tensor):
+                entity['score'] = entity['score'].item()
+            elif 'score' in entity and hasattr(entity['score'], 'item'): # Handle numpy.float32
+                entity['score'] = entity['score'].item()
         return {"text": text_input.text, "entities": results}
 
     except Exception as e:
