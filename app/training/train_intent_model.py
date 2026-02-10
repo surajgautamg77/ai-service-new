@@ -72,7 +72,7 @@ def train_model(file_path: str):
         per_device_eval_batch_size=8,
         num_train_epochs=4,
         weight_decay=0.01,
-        load_best_model_at_end=True
+        load_best_model_at_end=False # Reverted to False
     )
 
     trainer = Trainer(
