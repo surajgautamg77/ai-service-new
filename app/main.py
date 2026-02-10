@@ -3,8 +3,11 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 import uvicorn
 import os
+from app.api.endpoints import train_model
 
 app = FastAPI()
+
+app.include_router(train_model.router, prefix="/api/v1/training", tags=["training"])
 
 # Set up Jinja2Templates for serving HTML
 templates_dir = os.path.join(os.path.dirname(__file__), "templates")
