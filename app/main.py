@@ -3,17 +3,12 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 import uvicorn
 import os
-from app.api.endpoints import train_model
+from app.api.endpoints import train_model, check_intent
 
-app = FastAPI(title="ai service new", version="1.0", root_path="/ragai")
-
-# app = FastAPI(
-#     docs_url="/genai/docs",
-#     redoc_url="/genai/redoc",
-#     openapi_url="/genai/openapi.json"
-# )
+app = FastAPI(title="ai service new", version="1.0")
 
 app.include_router(train_model.router, prefix="/api/v1/training", tags=["training"])
+app.include_router(check_intent.router, prefix="/api/v1/intent", tags=["intent"])
 
 # Set up Jinja2Templates for serving HTML
 templates_dir = os.path.join(os.path.dirname(__file__), "templates")
