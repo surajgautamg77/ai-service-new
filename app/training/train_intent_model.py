@@ -14,7 +14,7 @@ import shutil
 
 def train_model(file_path: str):
     MODEL_NAME = "xlm-roberta-base"
-    MODEL_PATH = "app/models/intent_xlmr"
+    MODEL_PATH = "app/models/intent_recognition/xlmr"
     
     # Remove existing model directory if it exists
     if os.path.exists(MODEL_PATH):

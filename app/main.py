@@ -3,12 +3,14 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 import uvicorn
 import os
-from app.api.endpoints import train_model, check_intent
+from app.api.intentdetection_xlmr import train_model, check_intent
+from app.api.entityextraction_xlm_r_ner import check_ner
 
 app = FastAPI(title="ai service new", version="1.0")
 
 app.include_router(train_model.router, prefix="/api/v1/training", tags=["training"])
 app.include_router(check_intent.router, prefix="/api/v1/intent", tags=["intent"])
+app.include_router(check_ner.router, prefix="/api/v1/ner", tags=["ner"])
 
 # Set up Jinja2Templates for serving HTML
 templates_dir = os.path.join(os.path.dirname(__file__), "templates")
