@@ -1,0 +1,33 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+
+# Virtual environment
+venv/
+.venv/
+
+# Editor/IDE files
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# MyPy
+.mypy_cache/
+
+# pytest
+.pytest_cache/
+
+# Jupyter Notebook files
+.ipynb_checkpoints/
+
+# Data and models (if not versioned)
+data/*.csv
+models/
+
+# Logs
+*.log
