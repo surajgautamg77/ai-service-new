@@ -5,7 +5,13 @@ import uvicorn
 import os
 from app.api.endpoints import train_model
 
-app = FastAPI()
+app = FastAPI(title="ai service new", version="1.0", root_path="/ragai")
+
+# app = FastAPI(
+#     docs_url="/genai/docs",
+#     redoc_url="/genai/redoc",
+#     openapi_url="/genai/openapi.json"
+# )
 
 app.include_router(train_model.router, prefix="/api/v1/training", tags=["training"])
 
