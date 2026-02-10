@@ -25,8 +25,8 @@ def run_training_in_background(file_path: str):
 
 @router.post("/train", summary="Trigger model training with a CSV file")
 async def trigger_model_training(
-    file: UploadFile = File(..., description="CSV file containing training data (text and intent columns)"),
-    background_tasks: BackgroundTasks
+    background_tasks: BackgroundTasks,
+    file: UploadFile = File(..., description="CSV file containing training data (text and intent columns)")
 ):
     """
     Triggers the training process for an intent detection model using an uploaded CSV file.
